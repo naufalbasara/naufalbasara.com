@@ -28,7 +28,7 @@ export default function HomePage() {
           <div className='layout min-h-screen text-center sm:grid sm:grid-cols-3'>
             <Header/>
             <main className='mx-auto flex-col items-center sm:mt-32 mt-24 sm:col-span-2'>
-              <section className='flex'>
+              <section className='flex items-center'>
                 <NextImage
                   useSkeleton
                   src='/images/profile-picture.png'
@@ -36,9 +36,9 @@ export default function HomePage() {
                   height='160'
                   alt='naufalbasara.png'
                 />
-                <Card className='text-left'>
-                  <h1 className='text-3xl'>Naufal Rafiawan Basara</h1>
-                  <p className='text-sm text-[#A0A0A0]'>Tech savvy, AI/ML enthusiast</p>
+                <Card className='text-left sm:h-20 h-full p-2'>
+                  <h1 className='sm:text-3xl text-lg mb-2'>Naufal Rafiawan Basara</h1>
+                  <p className='sm:text-sm text-xs text-[#A0A0A0]'>Tech savvy, AI/ML enthusiast</p>
                 </Card>
               </section>
               <section className='text-left mt-8'>
@@ -50,6 +50,11 @@ export default function HomePage() {
                   <i className="devicon-django-plain mr-4"></i>
                   <i className="devicon-microsoftsqlserver-plain-wordmark mr-4"></i>
                   <i className="devicon-nextjs-original"></i>
+                </div>
+                <div>
+                  <Card>
+                    
+                  </Card>
                 </div>
               </section>
             </main>

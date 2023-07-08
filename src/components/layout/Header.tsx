@@ -13,7 +13,7 @@ export default function Header() {
   const router = useRouter()
 
   return (
-    <header className='static sm:sm-left-0 sm:z-50 sm:mt-32 mt-24 mx-auto'>
+    <header className='static sm:sm-left-0 sm:z-50 sm:mt-32 mx-auto'>
       <div className='sm:flex sm:flex-col sm:justify-between sm:text-end'>
         <UnstyledLink href='/' className='font-bold text-3xl hover:text-[#4FB464] sm:mb-16'>
           {'<basara/>'}

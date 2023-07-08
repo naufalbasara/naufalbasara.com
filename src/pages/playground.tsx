@@ -3,6 +3,7 @@ import * as React from 'react';
 import Layout from '@/components/layout/Layout';
 import Header from '@/components/layout/Header';
 import Seo from '@/components/Seo';
+import SearchBar from '@/components/SearchBar';
 
 /**
  * SVGR Support
@@ -24,8 +25,9 @@ export default function Playground() {
         <section className='bg-[#171717] text-white'>
           <div className='layout min-h-screen text-center sm:grid sm:grid-cols-3'>
             <Header/>
-            <main className='mx-auto flex-col items-center sm:mt-32 mt-24 sm:col-span-2'>
-              empty
+            <main className='mx-auto w-full flex-col items-center sm:mt-32 mt-24 sm:col-span-2'>
+              <SearchBar className='mb-6'/>
+              <p>empty..</p>
             </main>
           </div>
         </section>

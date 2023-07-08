@@ -89,7 +89,7 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
   {
     rel: 'apple-touch-icon',
     sizes: '180x180',
-    href: '/favicon/apple-touch-icon.png',
+    href: '/favicon/apple-icon-180x180.png',
   },
   {
     rel: 'icon',
@@ -104,5 +104,5 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
     href: '/favicon/favicon-16x16.png',
   },
   { rel: 'manifest', href: '/favicon/site.webmanifest' },
-  { rel: 'shortcut icon', href: '/favicon/favicon.ico' },
+  { rel: 'shortcut icon', href: '/favicon/large-og.png' },
 ];
