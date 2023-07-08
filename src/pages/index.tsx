@@ -5,27 +5,36 @@ import Header from '@/components/layout/Header';
 import Seo from '@/components/Seo';
 import NextImage from '@/components/NextImage';
 import Card from '@/components/Card';
-
-/**
- * SVGR Support
- * Caveat: No React Props Type.
- *
- * You can override the next-env if the type is important to you
- * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
- */
-
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
+import UnstyledLink from '@/components/links/UnstyledLink';
+import { Octokit } from "@octokit/core";
 
 export default function HomePage() {
+  const [data, setData] = React.useState({name:'',total_repo:null});
+  React.useEffect(() => {
+    const octokit = new Octokit({
+      auth: `${process.env.NEXT_PUBLIC_API_KEY}`
+    })
+    octokit.request(
+      "https://api.github.com/users/naufalbasara", 
+      {
+        headers: {
+          authorization: `token ${process.env.NEXT_PUBLIC_API_KEY}`
+        }
+      }
+    ).then((response) => {
+      const data = {name:'', total_repo:null}
+      data.name = response.data['login'];
+      data.total_repo = response.data['total_private_repos'] + response.data['public_repos'];
+      setData(data);
+    })
+});
+
   return (
     <Layout>
       <Seo templateTitle='Home' />
-
       <main>
         <section className='bg-[#171717] text-white'>
-          <div className='layout min-h-screen text-center sm:grid sm:grid-cols-3'>
+          <div className='layout h-full sm:min-h-screen text-center sm:grid sm:grid-cols-3'>
             <Header/>
             <main className='mx-auto flex-col items-center sm:mt-32 mt-24 sm:col-span-2'>
               <section className='flex items-center'>
@@ -51,9 +60,16 @@ export default function HomePage() {
                   <i className="devicon-microsoftsqlserver-plain-wordmark mr-4"></i>
                   <i className="devicon-nextjs-original"></i>
                 </div>
-                <div>
-                  <Card>
+                <div className='my-8'>
+                  <Card className='flex items-center justify-between text-left p-4 w-56 h-20'>
+                    <div>
+                    <p>@{data.name}</p>
+                    <p className='text-xs text-[#A0A0A0]'>{data.total_repo} total repositories</p>
+                    </div>
                     
+                    <UnstyledLink href='https://github.com/naufalbasara'>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="32" className='text-white' viewBox="0 -960 960 960" width="32"><path d="m202-160-42-42 498-498H364v-60h396v396h-60v-294L202-160Z"/></svg>
+                    </UnstyledLink>
                   </Card>
                 </div>
               </section>
