@@ -6,7 +6,7 @@ const defaultMeta = {
   title: 'Naufal Rafiawan Basara',
   siteName: 'Naufal Rafiawan Basara',
   description:
-    'Machine Learning enthusiast, developer, and life-time learner',
+    'Tech savvy, Machine Learning enthusiast, developer',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://naufalbasara.com',
   type: 'website',
@@ -15,7 +15,7 @@ const defaultMeta = {
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
-  image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
+  image: '/favicon/android-chrome-512x512.png',
 };
 
 type SeoProps = {
@@ -40,6 +40,7 @@ export default function Seo(props: SeoProps) {
       <meta content={meta.description} name='description' />
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
       {/* Open Graph */}
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
@@ -53,6 +54,7 @@ export default function Seo(props: SeoProps) {
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
+      
       {meta.date && (
         <>
           <meta property='article:published_time' content={meta.date} />
@@ -102,10 +104,5 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
     href: '/favicon/favicon-16x16.png',
   },
   { rel: 'manifest', href: '/favicon/site.webmanifest' },
-  {
-    rel: 'mask-icon',
-    href: '/favicon/safari-pinned-tab.svg',
-    color: '#00e887',
-  },
   { rel: 'shortcut icon', href: '/favicon/favicon.ico' },
 ];

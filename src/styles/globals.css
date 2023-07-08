@@ -31,10 +31,11 @@
 @layer base {
   /* inter var - latin */
   @font-face {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 100 900;
-    src: url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+    src: url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
   }
 
   .cursor-newtab {
