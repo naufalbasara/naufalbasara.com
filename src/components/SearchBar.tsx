@@ -9,9 +9,7 @@ type SearchBarProps = {
 const Button = React.forwardRef<HTMLDivElement, SearchBarProps>(
   (
     {
-      children,
       className,
-      ...rest
     },
   ) => {
     return (
