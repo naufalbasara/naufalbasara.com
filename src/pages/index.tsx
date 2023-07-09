@@ -27,7 +27,7 @@ export default function HomePage() {
       data.total_repo = response.data['total_private_repos'] + response.data['public_repos'];
       setData(data);
     })
-});
+}, [HomePage]);
 
   return (
     <Layout>
