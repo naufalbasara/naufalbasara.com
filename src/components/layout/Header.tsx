@@ -27,6 +27,7 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))}
+            <li className='text-xs text-[#A0A0A0] sm:block hidden'>© 2023 - rb</li>
           </ul>
         </nav>
       </div>

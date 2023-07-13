@@ -9,7 +9,6 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 
 export default function HomePage() {
   const [data, setData] = React.useState({username:null, total_repos:null});
-  const [loading, setLoading] = React.useState(true);
   const dataFetchedRef = React.useRef(false);
 
 
@@ -24,7 +23,6 @@ export default function HomePage() {
             'total_repos': response.total_repos
           }
           setData(github_data);
-          setLoading(false);
         })
       });
     } catch {
@@ -40,7 +38,7 @@ export default function HomePage() {
         <section className='bg-[#171717] text-white'>
           <div className='layout h-full sm:min-h-screen text-center sm:grid sm:grid-cols-3'>
             <Header/>
-            <main className='mx-auto flex-col items-center sm:mt-32 mt-24 sm:col-span-2'>
+            <main className='w-full mx-auto flex-col items-center sm:mt-32 mt-24 sm:col-span-2'>
               <section className='flex items-center'>
                 <NextImage
                   useSkeleton
@@ -74,7 +72,7 @@ export default function HomePage() {
                   </div>
                   
                   <UnstyledLink href='https://github.com/naufalbasara'>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="32" className='text-white' viewBox="0 -960 960 960" width="32"><path d="m202-160-42-42 498-498H364v-60h396v396h-60v-294L202-160Z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z"/></svg>
                   </UnstyledLink>
                   </Card>
                 }

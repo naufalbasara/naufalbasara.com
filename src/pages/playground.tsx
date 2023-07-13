@@ -4,18 +4,12 @@ import Layout from '@/components/layout/Layout';
 import Header from '@/components/layout/Header';
 import Seo from '@/components/Seo';
 import SearchBar from '@/components/SearchBar';
+import Blog from '@/components/Blog';
 
-/**
- * SVGR Support
- * Caveat: No React Props Type.
- *
- * You can override the next-env if the type is important to you
- * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
- */
-
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
+const dataBlog = [
+  {'title': 'Cats vs Dogs Classifier', 'dateUpload': '8 June 2023'},
+  {'title': 'Sentiment Analysis with IndoBERT', 'dateUpload': '12 July 2023'},
+]
 
 export default function Playground() {
   return (
@@ -27,7 +21,9 @@ export default function Playground() {
             <Header/>
             <main className='mx-auto w-full flex-col items-center sm:mt-32 mt-24 sm:col-span-2'>
               <SearchBar className='mb-6'/>
-              <p>empty..</p>
+              {dataBlog.map(({title, dateUpload}) => (
+                <Blog key={title} title={title} dateUpload={dateUpload} className='mb-4'/>
+              ))}
             </main>
           </div>
         </section>
