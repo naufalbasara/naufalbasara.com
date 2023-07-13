@@ -6,28 +6,32 @@ import Seo from '@/components/Seo';
 import NextImage from '@/components/NextImage';
 import Card from '@/components/Card';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import { Octokit } from "@octokit/core";
 
 export default function HomePage() {
-  const [data, setData] = React.useState({name:'',total_repo:null});
+  const [data, setData] = React.useState({username:null, total_repos:null});
+  const [loading, setLoading] = React.useState(true);
+  const dataFetchedRef = React.useRef(false);
+
+
   React.useEffect(() => {
-    const octokit = new Octokit({
-      auth: `${process.env.NEXT_PUBLIC_API_KEY}`
-    })
-    octokit.request(
-      "https://api.github.com/users/naufalbasara", 
-      {
-        headers: {
-          authorization: `token ${process.env.NEXT_PUBLIC_API_KEY}`
-        }
-      }
-    ).then((response) => {
-      const data = {name:'', total_repo:null}
-      data.name = response.data['login'];
-      data.total_repo = response.data['total_private_repos'] + response.data['public_repos'];
-      setData(data);
-    })
-}, [HomePage]);
+    if (dataFetchedRef.current) return; 
+    dataFetchedRef.current = true;
+    try {
+      fetch('api/handler').then((response) => {
+        response.json().then((response) => {
+          const github_data = {
+            'username': response.name,
+            'total_repos': response.total_repos
+          }
+          setData(github_data);
+          setLoading(false);
+        })
+      });
+    } catch {
+      console.log('failed to fetch')
+    }
+    
+}, []);
 
   return (
     <Layout>
@@ -61,16 +65,19 @@ export default function HomePage() {
                   <i className="devicon-nextjs-original"></i>
                 </div>
                 <div className='my-8'>
+                {
+                  data.username &&
                   <Card className='flex items-center justify-between text-left p-4 w-56 h-20'>
-                    <div>
-                    <p>@{data.name}</p>
-                    <p className='text-xs text-[#A0A0A0]'>{data.total_repo} total repositories</p>
-                    </div>
-                    
-                    <UnstyledLink href='https://github.com/naufalbasara'>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="32" className='text-white' viewBox="0 -960 960 960" width="32"><path d="m202-160-42-42 498-498H364v-60h396v396h-60v-294L202-160Z"/></svg>
-                    </UnstyledLink>
+                  <div>
+                    <p>@{data.username}</p>
+                    <p className='text-xs text-[#A0A0A0]'>{data.total_repos} total repositories</p>
+                  </div>
+                  
+                  <UnstyledLink href='https://github.com/naufalbasara'>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="32" className='text-white' viewBox="0 -960 960 960" width="32"><path d="m202-160-42-42 498-498H364v-60h396v396h-60v-294L202-160Z"/></svg>
+                  </UnstyledLink>
                   </Card>
+                }
                 </div>
               </section>
             </main>

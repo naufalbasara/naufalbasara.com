@@ -15,14 +15,14 @@ export default function Header() {
   return (
     <header className='static sm:sm-left-0 sm:z-50 sm:mt-32 mx-auto'>
       <div className='sm:flex sm:flex-col sm:justify-between sm:text-end'>
-        <UnstyledLink href='/' className='font-bold text-3xl hover:text-[#4FB464] sm:mb-16'>
+        <UnstyledLink href='/' className='font-bold text-3xl transition-all ease-in-out duration-600 hover:text-[#4FB464] sm:mb-16'>
           {'<basara/>'}
         </UnstyledLink>
         <nav>
           <ul className='flex sm:flex-col justify-between text-end'>
             {links.map(({ href, label }) => (
-              <li key={`${href}${label}`} className='sm:mb-16 text-xl'>
-                <UnstyledLink href={href} className={router.pathname===href?'text-[#4FB464]':'text-white' + ' hover:text-[#4FB464]'}>
+              <li key={`${href}${label}`} className='sm:mb-16 text-xl p-2'>
+                <UnstyledLink href={href} className={router.pathname===href?'text-[#4FB464] motion-safe:animate-pulse':'' + ' transition-all ease-in-out text-white duration-600 hover:text-[#4FB464]'}>
                   {label}
                 </UnstyledLink>
               </li>
