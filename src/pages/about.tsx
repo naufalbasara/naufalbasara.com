@@ -15,13 +15,13 @@ export default function About() {
                 <p className='text-[#A0A0A0] my-10'>I particularly interested in exploring opportunities to work with Tensorflow environment. I'm open for discussions of projects, partnership, or hiring 🤝</p>
           
                 <section className='flex items-center text-3xl my-4'>
-                  <UnstyledLink href='https://github.com/naufalbasara' className='me-4'>
+                  <UnstyledLink href='https://github.com/naufalbasara' className='mr-6'>
                     <i className="devicon-github-original"></i>
                   </UnstyledLink>
-                  <UnstyledLink href='https://linkedin.com/in/naufalrafiawan' className='me-4'>
+                  <UnstyledLink href='https://linkedin.com/in/naufalrafiawan' className='mr-6'>
                     <i className="devicon-linkedin-plain"></i>
                   </UnstyledLink>
-                  <UnstyledLink href='https://twitter.com/naufalbasara' className='me-4'>
+                  <UnstyledLink href='https://twitter.com/naufalbasara' className='mr-6'>
                     <i className="devicon-twitter-original"></i>
                   </UnstyledLink>
                 </section>
