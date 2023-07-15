@@ -1,32 +1,16 @@
 import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
-import Header from '@/components/layout/Header';
 import Seo from '@/components/Seo';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import ArrowLink from '@/components/links/ArrowLink';
-/**
- * SVGR Support
- * Caveat: No React Props Type.
- *
- * You can override the next-env if the type is important to you
- * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
- */
-
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
 
 export default function About() {
   return (
     <Layout>
       <Seo templateTitle='About' />
       <main>
-        <section className='bg-[#171717] text-white'>
-          <div className='layout min-h-screen text-center sm:grid sm:grid-cols-3'>
-            <Header/>
-            <main className='w-full mx-auto items-center sm:mt-32 mt-24 sm:col-span-2'>
-              <section className='block items-start text-left'>
+      <section className='block items-start text-left'>
                 <h1 className='sm:text-3xl text-lg text-left mb-6'>👋 Hey, Contact me for anything!</h1>
                 <p className='text-[#A0A0A0] my-10'>I particularly interested in exploring opportunities to work with Tensorflow environment. I'm open for discussions of projects, partnership, or hiring 🤝</p>
           
@@ -43,15 +27,16 @@ export default function About() {
                 </section>
 
                 <section>
+                  <ArrowLink href='https://drive.google.com/file/d/1EZhgH6BOlb-3Af1H1ug0TPTjo8qkPXC0/view?usp=sharing' as={UnstyledLink}
+                    className='inline-flex items-center mr-4'>
+                    my resume
+                  </ArrowLink>
                   <ArrowLink href='mailto:naufalbasara@outlook.com?cc=naufalbasara9@gmail.com' as={UnstyledLink}
                     className='inline-flex items-center'>
                     send me emails
                   </ArrowLink>
                 </section>
               </section>
-            </main>
-          </div>
-        </section>
       </main>
     </Layout>
   );

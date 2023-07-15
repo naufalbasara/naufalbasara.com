@@ -1,8 +1,6 @@
 import * as React from 'react';
 
 type SearchBarProps = {
-  leftIconClassName?: string;
-  rightIconClassName?: string;
   className?: string;
 } & React.ComponentPropsWithRef<'div'>;
 
