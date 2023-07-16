@@ -11,8 +11,8 @@ export default function NotFoundPage() {
       <Seo templateTitle='Not Found' />
 
       <main>
-        <section className='bg-white'>
-          <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-black'>
+        <section className='bg-transparent'>
+          <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-white'>
             <RiAlarmWarningFill
               size={60}
               className='drop-shadow-glow animate-flicker text-red-500'
