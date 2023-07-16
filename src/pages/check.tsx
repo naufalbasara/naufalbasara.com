@@ -3,7 +3,7 @@ import * as React from 'react';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 import PostLayout from '@/components/layout/PostLayout';
-// import MDPage from '@/blogContents/mdx-page.mdx';
+import SentimentAnalysis from '@/blogContents/sentiment-analysis.mdx';
 
 // const dataBlog = [
 //   {'title': 'Cats vs Dogs Classifier', 'dateUpload': '8 June 2023'},
@@ -16,7 +16,7 @@ export default function Check() {
       <Seo templateTitle='Check' />
       <main>
         <PostLayout>
-          {/* <MDPage/> */}
+          <SentimentAnalysis/>
         </PostLayout>
       </main>
     </Layout>

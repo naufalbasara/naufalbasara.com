@@ -15,7 +15,7 @@ export const getPostBySlug = async (slug:string) => {
     options: {parseFrontmatter: true}
   }) 
 
-  return {meta : {slug: realSlug, ...frontmatter}, content}
+  return {content, meta : {slug: realSlug, ...frontmatter}}
 
 }
 

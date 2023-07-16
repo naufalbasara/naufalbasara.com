@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
-import Header from '@/components/layout/Header';
 import Seo from '@/components/Seo';
 import NextImage from '@/components/NextImage';
 import Card from '@/components/Card';
@@ -34,7 +33,6 @@ export default function HomePage() {
   return (
     <Layout>
       <Seo templateTitle='Home' />
-        <main>
           <section className='flex items-center'>
                     <NextImage
                       useSkeleton
@@ -74,7 +72,6 @@ export default function HomePage() {
                     }
                     </div>
                   </section>
-        </main>
     </Layout>
   );
 }

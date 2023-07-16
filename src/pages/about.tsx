@@ -9,7 +9,6 @@ export default function About() {
   return (
     <Layout>
       <Seo templateTitle='About' />
-      <main>
       <section className='block items-start text-left'>
                 <h1 className='sm:text-3xl text-lg text-left mb-6'>👋 Hey, Contact me for anything!</h1>
                 <p className='text-[#A0A0A0] my-10'>I particularly interested in exploring opportunities to work with Tensorflow environment. I'm open for discussions of projects, partnership, or hiring 🤝</p>
@@ -37,7 +36,6 @@ export default function About() {
                   </ArrowLink>
                 </section>
               </section>
-      </main>
     </Layout>
   );
 }
