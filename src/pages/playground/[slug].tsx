@@ -22,7 +22,7 @@ const SinglePage = ({
     <>
       <Layout>
         <Seo templateTitle={`${frontMatter.title}`} />
-        <main className={poppins.className + ' text-left prose dark:prose-invert'}>
+        <main className={poppins.className + ' text-left prose prose-invert'}>
           <h1>{frontMatter.title}</h1>
           <span className='text-xs text-[#A0A0A0]'>{frontMatter.dateUpload} by {frontMatter.author}</span>
           <hr className='mt-4'/>
