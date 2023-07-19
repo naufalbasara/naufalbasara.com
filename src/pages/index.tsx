@@ -5,6 +5,12 @@ import Seo from '@/components/Seo';
 import NextImage from '@/components/NextImage';
 import Card from '@/components/Card';
 import UnstyledLink from '@/components/links/UnstyledLink';
+import { Poppins } from '@next/font/google';
+
+const poppins = Poppins({
+  subsets:['latin'],
+  weight:['400', '700'],
+})
 
 export default function HomePage() {
   const [data, setData] = React.useState({ username: null, total_repos: null });
@@ -46,7 +52,7 @@ export default function HomePage() {
           </p>
         </Card>
       </section>
-      <section className='mt-8 text-left'>
+      <section className={poppins.className + ' mt-8 text-left'}>
         <p>
           As a final-year Information Systems student with hard-working, highly
           dedicated traits and solid knowledge in programming, I dedicated to

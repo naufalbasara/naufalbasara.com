@@ -20,7 +20,7 @@ export default function Playground({
           href={`/playground/${frontMatter?.slug}`}
           title={frontMatter?.title}
           dateUpload={frontMatter?.dateUpload}
-          className='mb-4'
+          className='mb-4 hover:text-[#A0A0A0]'
         />
       ))}
     </Layout>

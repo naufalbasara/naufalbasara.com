@@ -5,10 +5,14 @@ import { InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
-// import renderToString from 'next-mdx-remote/render-to-string'
-// import hydrate from 'next-mdx-remote/hydrate'
 import path from 'path';
 import fs from 'fs';
+import { Poppins } from '@next/font/google';
+
+const poppins = Poppins({
+  subsets:['latin'],
+  weight:['100', '200', '300', '400', '500', '600', '700'],
+})
 
 const SinglePage = ({
   source,
@@ -18,12 +22,14 @@ const SinglePage = ({
     <>
       <Layout>
         <Seo templateTitle={`${frontMatter.title}`} />
-        <main className='text-left'>
+        <main className={poppins.className + ' text-left prose dark:prose-invert'}>
+          <h1>{frontMatter.title}</h1>
+          <span className='text-xs text-[#A0A0A0]'>{frontMatter.dateUpload} by {frontMatter.author}</span>
           <MDXRemote {...source} />
         </main>
         {source && (
-          <footer className='p-10'>
-            <p>copyright 2023</p>
+          <footer className='p-10 text-sm'>
+            <p>© 2023 - rb</p>
           </footer>
         )}
       </Layout>
