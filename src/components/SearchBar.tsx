@@ -4,7 +4,7 @@ type SearchBarProps = {
   className?: string;
 } & React.ComponentPropsWithRef<'div'>;
 
-const Button = React.forwardRef<HTMLDivElement, SearchBarProps>(
+const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
   (
     {
       className,
@@ -25,4 +25,4 @@ const Button = React.forwardRef<HTMLDivElement, SearchBarProps>(
   }
 );
 
-export default Button;
+export default SearchBar;

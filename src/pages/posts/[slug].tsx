@@ -7,7 +7,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import path from 'path';
 import fs from 'fs';
-import { Poppins } from '@next/font/google';
+import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
   subsets:['latin'],

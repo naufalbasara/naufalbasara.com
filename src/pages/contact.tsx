@@ -10,10 +10,10 @@ const poppins = Poppins({
   subsets:['latin'],
   weight:['400', '700'],
 })
-export default function About() {
+export default function Contact() {
   return (
     <Layout>
-      <Seo templateTitle='About' />
+      <Seo templateTitle='Contact' />
       <section className={poppins.className + ' block items-start text-left'}>
         <h1 className='mb-6 text-left text-lg sm:text-3xl'>
           👋 Hey, Contact me for anything!
@@ -25,7 +25,7 @@ export default function About() {
         </p>
 
         <section className='my-4 flex items-center text-3xl'>
-          <UnstyledLink href='https://github.com/naufalbasara' className='mr-6 hover:text-[#A0A0A0] active:text-[#2A412A]'>
+          <UnstyledLink href='https://github.com/naufalbasara' className='mr-6 hover:text-[#A0A0A0] active:text-[#2A412A] '>
             <i className='devicon-github-original'></i>
           </UnstyledLink>
           <UnstyledLink

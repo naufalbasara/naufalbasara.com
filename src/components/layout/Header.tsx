@@ -5,8 +5,8 @@ import {useRouter} from 'next/router';
 
 const links = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/playground', label: 'Playground' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/posts', label: 'Posts' },
 ];
 
 export default function Header() {
