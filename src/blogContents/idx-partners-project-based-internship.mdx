@@ -1,0 +1,44 @@
+---
+title: 'Loan Credit Risk Assessment | ID/X Partners Project-based Internship'
+dateUpload: 'August 28 2023'
+author: Naufal Rafiawan Basara
+---
+
+## Problem
+
+### Overview
+
+Lending company always faced with various of challenges, especially when it comes to lack of borrowers responsibility. Borrowers comes with different purposes of loan, economic level, and profile.
+
+Therefore, the company have to assess the risk for each of the borrowers to minimize the chance of default to consider which borrower’s loan is accepted or not.
+
+### What's the challenge?
+
+ID/X Partners’ client, a credit lending company, is facing a problem to assess the borrower profile. The company have a whole data about borrowers profile in a dataset but still haven’t sure about the credit risk assessment, whether the company should accept the loan or not.
+
+With limited data, the lending company need to predict of what the future borrower’s risk possibility is or even the current borrowers risk profile. The dataset given with 74 columns which include the unique identifier and borrower’s profile, current loan status, credit balance, etc. Filled with 466284 data records, but not all columns has complete data records so that we have to fill it based on information from another column in a dataset if necessary.
+
+
+### How is the borrower's loan status?
+
+How do we determine which borrower profile will be accepted or not? First we look at the unique value of the each borrower’s loan status. We can classify each of the status to 2 values that indicate the good and risky credit loan.
+
+Here i determine the status is in the good state while the borrowers is on “Current”, “Fully Paid”, and “Fully Paid even if the borrower does not meet credit policy”. Besides that, “Charged Off”, “Late”, “In Grace Period”, “Default” is classify as the risky loan states. After classified as good and risky loan, **408,965** Number of borrowers with good risk status of loan reached, whereas only **57,291** borrowers with risky status of loan.
+
+## Data Pipeline
+
+### 1. Preprocessing
+Clean the dataset, such as filling nulls value, remove outliers, Encode the categorical columns, Scaling features
+
+### 2. EDA
+Explore important feature to help fitting the model, finding features importance with Random Forest and Decision Tree Regressor
+
+### 3. Modelling
+Split the data to two subset train and test set, fit the data to the model.
+
+### 4. Evaluation
+Find and select the optimal model regarding the metrics
+
+## Conclusion
+To minimize the chance of borrowers default, lending company need to assess risk status of each of the borrower with the help of machine learning to predict whether the borrower is accepted or not.
+Random Forest has been selected as the best model due to its metrics and the highest accuracy of 0.9737 than Logistic Regression and Decision Tree model.
