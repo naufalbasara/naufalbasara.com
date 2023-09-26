@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 // !STARTERCONF Change these default meta
 const defaultMeta = {
   title: 'Naufal Rafiawan Basara',
-  siteName: 'Naufal Rafiawan Basara',
+  siteName: 'naufalbasara.vercel.app',
   description:
-    'Tech savvy, Machine Learning enthusiast, developer',
+    'A showcase of Naufal Rafiawan Basara\'s portfolio. Tech savvy, AI Enthusiast, Developer',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://naufalbasara.com',
+  url: 'https://naufalbasara.vercel.app',
   type: 'website',
   robots: 'follow, index',
   /**
@@ -49,7 +49,7 @@ export default function Seo(props: SeoProps) {
       <meta name='image' property='og:image' content={meta.image} />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
-      {/* // !STARTERCONF Remove or change to your handle */}
+
       <meta name='twitter:site' content='@naufalbasara' />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
@@ -63,7 +63,7 @@ export default function Seo(props: SeoProps) {
             property='og:publish_date'
             content={meta.date}
           />
-          {/* // !STARTERCONF Remove or change to your name */}
+
           <meta
             name='author'
             property='article:author'
