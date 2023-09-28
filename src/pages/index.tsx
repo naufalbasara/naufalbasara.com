@@ -38,7 +38,7 @@ export default function HomePage() {
 
   return (
     <Layout>
-      <Seo templateTitle='Home' />
+      <Seo/>
       <section className='flex items-center'>
         <NextImage
           useSkeleton

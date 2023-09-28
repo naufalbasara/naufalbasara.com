@@ -7,14 +7,9 @@ const defaultMeta = {
   siteName: 'naufalbasara.vercel.app',
   description:
     'A showcase of Naufal Rafiawan Basara\'s portfolio. Tech savvy, AI Enthusiast, Developer',
-  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://naufalbasara.vercel.app',
   type: 'website',
   robots: 'follow, index',
-  /**
-   * No need to be filled, will be populated with openGraph function
-   * If you wish to use a normal image, just specify the path below
-   */
   image: '/favicon/android-chrome-512x512.png',
 };
 
@@ -41,6 +36,7 @@ export default function Seo(props: SeoProps) {
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
+      <meta name="google-site-verification" content="y2H9bDuwgdeTzloKXSrXXWvbRc0bg8cuazv2PlQ7mYc" />
       {/* Open Graph */}
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
@@ -49,7 +45,6 @@ export default function Seo(props: SeoProps) {
       <meta name='image' property='og:image' content={meta.image} />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
-
       <meta name='twitter:site' content='@naufalbasara' />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
