@@ -8,6 +8,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const octokit = new Octokit({
     auth: `${process.env.API_KEY}`
   })
+  
   octokit.request(
     "https://api.github.com/users/naufalbasara", 
     {
@@ -16,9 +17,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       }
     }
   ).then((response) => {
-    const data = {name:null, total_repos:null}
+    const data = {name:null, total_repos:null, avatar_url:null};
     data.name = response.data['login'];
     data.total_repos = response.data['total_private_repos'] + response.data['public_repos'];
+    data.avatar_url = response.data['avatar_url'];
     res.status(200).json(data);
     req;
   })

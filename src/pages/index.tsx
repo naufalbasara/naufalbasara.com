@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
-import NextImage from '@/components/NextImage';
 import Card from '@/components/Card';
 import { Poppins } from '@next/font/google';
 
@@ -13,7 +12,11 @@ const poppins = Poppins({
 
 export default function HomePage() {
   const [isLoading, setLoading] = React.useState(false);
-  const [data, setData] = React.useState({ username: null, total_repos: null });
+  const [gitData, setGitData] = React.useState({ 
+    username: null, total_repos: null, avatar_url: null,
+  });
+  const [xdata, setXData] = React.useState( {username: null, profile_image_url:null} );
+  
   const dataFetchedRef = React.useRef(false);
 
   React.useEffect(() => {
@@ -26,8 +29,9 @@ export default function HomePage() {
           const github_data = {
             username: response.name,
             total_repos: response.total_repos,
+            avatar_url: response.avatar_url
           };
-          setData(github_data);
+          setGitData(github_data);
           setLoading(false)
         });
       });
@@ -40,13 +44,7 @@ export default function HomePage() {
     <Layout>
       <Seo/>
       <section className='flex items-center'>
-        <NextImage
-          useSkeleton
-          src='/images/profile-picture.png'
-          width='160'
-          height='160'
-          alt='naufalbasara.png'
-        />
+        <img className='block object-cover mx-auto w-28 shrink-0 h-28 rounded-full bg-white' src='/images/profile-picture.JPG'/>
         <div className='h-full p-2 text-left sm:h-20 bg-[#2A412F] rounded-2xl container'>
           <h1 className='mb-2 text-lg sm:text-3xl'>Naufal Rafiawan Basara</h1>
           <p className='text-xs text-[#A0A0A0] sm:text-sm'>
@@ -80,11 +78,12 @@ export default function HomePage() {
           <i className='devicon-nextjs-original'></i>
         </div>
         <div className={isLoading ? 'animate-pulse my-8' : ' my-8'}>
-            <Card href='https://github.com/naufalbasara' className={'flex h-20 w-56 items-center justify-between p-4 text-left hover:scale-105 transition hover:bg-opacity-70 hover:backdrop-blur-md hover:drop-shadow-md'}>
+            <Card href='https://github.com/naufalbasara' className={'flex h-24 w-60 items-center justify-between p-4 text-left hover:scale-105 transition hover:bg-opacity-70 hover:backdrop-blur-md hover:drop-shadow-md'}>
+                <img src={isLoading ? gitData.avatar_url : '/images/profile-picture.png'} className='h-12 w-12' alt="" />
               <div className={isLoading ? 'animate-pulse flex-1 space-y-3 py-1' : ""}>
-                <p className={isLoading ? 'h-2 bg-slate-400 rounded' : ''}>{!isLoading && '@' + data.username}</p>
+                <p className={isLoading ? 'h-2 bg-slate-400 rounded' : ''}>{!isLoading && gitData.username}</p>
                 <p className={isLoading ? 'h-2 bg-slate-400 rounded ' : 'text-xs text-[#A0A0A0]'}>
-                  {!isLoading && data.total_repos + ' total repositories'}
+                  {!isLoading && gitData.total_repos + ' total repositories'}
                 </p>
               </div>
               <svg
