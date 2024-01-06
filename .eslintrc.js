@@ -9,26 +9,24 @@ module.exports = {
     'eslint:recommended',
     'next',
     'next/core-web-vitals',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
   ],
   rules: {
     'no-unused-vars': 'off',
-    'no-console': 'warn',
+    'no-console': 'pff',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/no-unescaped-entities': 'off',
 
     'react/display-name': 'off',
     'react/jsx-curly-brace-presence': [
-      'warn',
+      'off',
       { props: 'never', children: 'never' },
     ],
 
     //#region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',
-    'unused-imports/no-unused-imports': 'warn',
+    'unused-imports/no-unused-imports': 'off',
     'unused-imports/no-unused-vars': [
-      'warn',
+      'off',
       {
         vars: 'all',
         varsIgnorePattern: '^_',
