@@ -4,16 +4,14 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  plugins: ['@typescript-eslint', 'simple-import-sort', 'unused-imports'],
+  plugins: ['simple-import-sort', 'unused-imports'],
   extends: [
-    'eslint:recommended',
     'next',
     'next/core-web-vitals',
   ],
   rules: {
     'no-unused-vars': 'off',
-    'no-console': 'pff',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-console': 'off',
     'react/no-unescaped-entities': 'off',
 
     'react/display-name': 'off',

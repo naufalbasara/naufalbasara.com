@@ -27,7 +27,12 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))}
-            <li className='text-xs text-[#A0A0A0] sm:block hidden'>© 2023 - rb</li>
+            <li className='text-xs text-[#A0A0A0] sm:block hidden mb-4'>© 2023 - rb</li>
+            <div className='text-xs text-[#A0A0A0] sm:block hidden'>
+                <UnstyledLink href={'/guestbook'} >
+                  signed my guestbook
+                </UnstyledLink>
+            </div>
           </ul>
         </nav>
       </div>

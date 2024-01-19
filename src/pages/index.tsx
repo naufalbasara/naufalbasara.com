@@ -18,6 +18,14 @@ export default function HomePage() {
     avatar_url: null,
   });
 
+  // React.useEffect(() => {
+  //   const init = async () => {
+  //     const { Tooltip, initTE } = await import("tw-elements");
+  //     initTE({ Tooltip });
+  //   };
+  //   init();
+  // }, []);
+
   React.useEffect(() => {
     (async () => {
       try {
@@ -48,7 +56,12 @@ export default function HomePage() {
           className='mx-auto block h-28 w-28 shrink-0 rounded-full bg-white object-cover'
           src='/images/profile-picture.JPG'
         />
-        <div className='container h-full rounded-2xl bg-[#2A412F] p-2 text-left sm:h-20'>
+        <div 
+        data-te-animation-init
+        data-te-animation-start="onHover"
+        data-te-animation-reset="true"
+        data-te-animation="[slide-right_1s_ease-in-out]"
+        className='container h-full rounded-2xl bg-[#2A412F] p-2 text-left sm:h-20'>
           <h1 className='mb-2 text-lg sm:text-3xl'>Naufal Rafiawan Basara</h1>
           <p className='text-xs text-[#A0A0A0] sm:text-sm'>
             Tech savvy, AI/ML enthusiast

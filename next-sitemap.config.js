@@ -4,7 +4,7 @@
  */
 module.exports = {
   // !STARTERCONF Change the siteUrl
-  siteUrl: 'https://naufalbasara.com',
+  siteUrl: 'https://naufalbasara.engineer',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
