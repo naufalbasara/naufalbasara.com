@@ -2,20 +2,20 @@ import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
-import { Poppins } from '@next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
+import Discussion from '@/components/Discussion';
 
 export default function GuestBook() {
-  const [isLoading, setLoading] = React.useState(false);
 
   return (
     <Layout>
       <Seo />
-      <h1>Coming soon..</h1>
+      <section className='block items-start text-left'>
+        <h1 className='mb-6 text-left text-lg sm:text-3xl'>
+        Sign my guestbook
+        </h1>
+        <p className='text-[#A0A0A0]'>Leave an online footprint here! - suggestions or messages</p>
+      </section>
+      <Discussion/>
     </Layout>
   );
 }

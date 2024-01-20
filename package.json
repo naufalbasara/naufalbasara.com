@@ -18,6 +18,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@giscus/react": "^2.4.0",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/font": "^13.4.10",
@@ -26,6 +27,7 @@
     "axios": "^1.6.5",
     "clsx": "^1.2.1",
     "dotenv-flow": "^3.2.0",
+    "giscus": "^1.4.0",
     "gray-matter": "^4.0.3",
     "markdown-it": "^13.0.1",
     "mdx-bundler": "^9.2.1",
