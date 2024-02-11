@@ -1,0 +1,82 @@
+---
+title: 'Python Virtual Environment 101'
+dateUpload: 'February 11 2024'
+author: Naufal Rafiawan Basara
+---
+
+## What is python virtual environment?
+
+A **[Python](https://www.geeksforgeeks.org/python-programming-language/)** Virtual Environment is an isolated space where you can work on your Python projects, separately from your system-installed Python. A virtual environment is a tool that helps to keep dependencies required by different projects separate by creating isolated **[Python](https://www.geeksforgeeks.org/python-programming-language/)** virtual environments for them. This is one of the most important tools that most Python developers use.
+
+## Steps to create python virtual environment
+
+1. **Making sure the python already installed in your computer**
+
+   1. How to check?
+
+      Go to terminal and type
+
+      ```bash
+      python --version
+      ```
+
+      `Python 3.11.3` → (Example of output, which is the version of python installed in your computer)
+
+   2. What if it doesn’t exist? or the output is not the same?
+
+      1. Install through the official python website and select based on your computer operating system (OS)
+
+         [Python Official Website](https://www.python.org/downloads/)
+
+      2. Install through package manager, like brew:
+
+         [Brew Official Website](https://brew.sh/)
+
+         ```bash
+         brew install python
+         ```
+
+2. **Go to spesific working directory (optional)**
+3. **Create new virtual environmetn by open terminal and type**
+
+   ```bash
+   python3 -m venv venv
+   ```
+
+   Now your directory structure will be having new directory named ‘venv’.
+
+   ![Screenshot of expected directory structure](https://naufalbasara.vercel.app/images/venv-directory.png)
+
+4. **Activate or deactivate virtual environment**
+
+   1. Activate virtual environment
+
+      on MacOS or Linux
+
+      ```bash
+      source venv/bin/activate
+      ```
+
+      on Windows OS
+
+      ```bash
+      venv/Scripts/activate
+      ```
+
+      You will see the name of your virtual environment (venv) before the terminal prompt symbol.
+
+      `$` → `(venv) $` which means the virtual environment is activated.
+
+   2. Deactivate virtual environment
+
+      ```bash
+      deactivate
+      ```
+
+      `(venv) $` → `$` which means the virtual environment is deactivated.
+
+5. **Virtual environment is active, you can install any library and package dependencies related to the current project by using**
+
+   ```bash
+   pip install package-name
+   ```
