@@ -10,33 +10,55 @@ import { InferGetStaticPropsType } from 'next';
 export default function Posts({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [isLoading, setLoading] = React.useState(false)
+  const [isLoading, setLoading] = React.useState(false);
+
+  let sortedPosts = posts.sort((a: any, b: any) => {
+    if (a.dateUpload < b.dateUpload) {
+      return 1;
+    } else if (a.dateUpload > b.dateUpload) {
+      return -1;
+    }
+    return 0;
+  });
+
   React.useEffect(() => {
     if (!posts) {
-      setLoading(true)
+      setLoading(true);
     } else {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [])
+  }, []);
 
   return (
     <Layout>
       <Seo templateTitle='Posts' />
       <SearchBar className='mb-6' />
-      {isLoading &&
-         <div className='text-center'>
-         <p className='text-base sm:text-md md:text-xl text-white'>please wait... <svg xmlns="http://www.w3.org/2000/svg" className='animate-spin text-white inline' height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-84 0-157-31t-127-85q-54-54-85-127T80-480q0-84 31-157t85-127q54-54 127-85t157-31q12 0 21 9t9 21q0 12-9 21t-21 9q-141 0-240.5 99.5T140-480q0 141 99.5 240.5T480-140q141 0 240.5-99.5T820-480q0-12 9-21t21-9q12 0 21 9t9 21q0 84-31 157t-85 127q-54 54-127 85T480-80Z"/></svg></p>
-         </div>
-      }
-      {!isLoading && posts?.map((frontMatter: any) => (
-        <Blog
-          key={frontMatter?.slug}
-          href={`/posts/${frontMatter?.slug}`}
-          title={frontMatter?.title}
-          dateUpload={frontMatter?.dateUpload}
-          className='mb-4 hover:text-[#A0A0A0]'
-        />
-      ))}
+      {isLoading && (
+        <div className='text-center'>
+          <p className='sm:text-md text-base text-white md:text-xl'>
+            please wait...{' '}
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='inline animate-spin text-white'
+              height='24'
+              viewBox='0 -960 960 960'
+              width='24'
+            >
+              <path d='M480-80q-84 0-157-31t-127-85q-54-54-85-127T80-480q0-84 31-157t85-127q54-54 127-85t157-31q12 0 21 9t9 21q0 12-9 21t-21 9q-141 0-240.5 99.5T140-480q0 141 99.5 240.5T480-140q141 0 240.5-99.5T820-480q0-12 9-21t21-9q12 0 21 9t9 21q0 84-31 157t-85 127q-54 54-127 85T480-80Z' />
+            </svg>
+          </p>
+        </div>
+      )}
+      {!isLoading &&
+        sortedPosts?.map((frontMatter: any) => (
+          <Blog
+            key={frontMatter?.slug}
+            href={`/posts/${frontMatter?.slug}`}
+            title={frontMatter?.title}
+            dateUpload={frontMatter?.dateUpload}
+            className='mb-4 hover:text-[#A0A0A0]'
+          />
+        ))}
     </Layout>
   );
 }
