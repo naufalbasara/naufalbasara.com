@@ -1,0 +1,50 @@
+---
+title: 'Daily Pray Reminder using Local CRON'
+dateUpload: 'April 10 2024'
+author: Naufal Rafiawan Basara
+---
+
+## Introduction
+
+Taking a computer science degree is the path that I have never been thinking of, at least until final year at high school. Long story short, now I am final semester student at ITS, [Sepuluh Nopember Institute of Technology](https://en.wikipedia.org/wiki/Sepuluh_Nopember_Institute_of_Technology). While I was still in the first year, I really pushed myself to comprehend all of the basic concept in programming. I could spent a whole day alone just to study, and forgetting about time, which is bad. As a proud muslim, I need to fulfill my mandatory pray, at least five times a day. Spending whole day and forgetting time is need to be prevented, so the idea came when it first crossed my mind. Simple notifications to remind daily mandatory prayer.
+
+## How did I do it?
+
+To develop a simple program that runs every time prayer time comes, I used Python with [macos-notifications](https://github.com/jorricks/macos-notifications) library by [Jorricks](https://github.com/Jorricks) to push notification to user desktop as seen below.
+
+![](https://raw.githubusercontent.com/naufalbasara/prife-balance/main/assets/notifications-demo.gif)
+
+In every prayer time comes, Python script I wrote above need to run in order to push the notification to desktop. That's when the cron job kicks in. Most of unix-like operating system, provide command-line utility to run a program on scheduled, which is called cron job. Since I am a Mac user, the system already packed with linux kernel which include the cron job command.
+
+### CRON Job
+
+CRON job can be self-configure through terminal in most of unix-like operating system. Look at below simple example of cron job configuration.
+
+```bash
+# Cron job example to run script.py at every minute
+* * * * * python3 /path/to/script.py
+```
+
+**Description**:
+1. `* * * * *` represent the hour(s), minute(s), day(s) of the month, month(s), and day(s) in a week.
+2. `python3` represent the python binary (should located at `/bin/python3`)
+3. `/path/to/script.py` represent the path to which the script need to be run
+
+Learn more about cron job [here](https://www.freecodecamp.org/news/cron-jobs-in-linux/) or you can play around with the operator to give you a sense [here](https://crontab.guru/).
+
+So I configure the cron job to be run in a specific time of prayer time using crontab and fetch the data from external source. Since I want to automatically update the cron jobs to adjust the time execution of pushing notifications script, I did the configurations through library [`python-crontab`](https://pypi.org/project/python-crontab/) that can configure cron jobs directly from Python.
+
+### Data Source
+
+For those of you wondering where did I get the prayer time data, I got it from open API from [Aladhan](https://aladhan.com/prayer-times-api). I set another cron job to automatically fetch the data to Aladhan API every day at 9 AM to ensure that the prayer time is always up to date.
+
+## Outlook
+
+Expectations that this simple pray reminder program can be useful to fellow muslim developers out there that needs to be remind about prayer time. I know it look very simple at a glance, but this is really helpful, especially when you can't hear adzan from the nearest mosque.
+
+## Links
+
+Go give it a try:
+[*prife-balance*](https://github.com/naufalbasara/prife-balance)
+
+> Sebaik-baiknya manusia adalah yang paling bermanfaat bagi manusia lainnya. (HR Thabrani)

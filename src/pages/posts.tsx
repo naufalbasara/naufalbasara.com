@@ -13,9 +13,11 @@ export default function Posts({
   const [isLoading, setLoading] = React.useState(false);
 
   let sortedPosts = posts.sort((a: any, b: any) => {
-    if (a.dateUpload < b.dateUpload) {
+    const date1 = new Date(a.dateUpload)
+    const date2 = new Date(b.dateUpload)
+    if (date1 < date2) {
       return 1;
-    } else if (a.dateUpload > b.dateUpload) {
+    } else if (date1 > date2) {
       return -1;
     }
     return 0;
@@ -50,7 +52,7 @@ export default function Posts({
         </div>
       )}
       {!isLoading &&
-        sortedPosts?.map((frontMatter: any) => (
+        sortedPosts.map((frontMatter: any) => (
           <Blog
             key={frontMatter?.slug}
             href={`/posts/${frontMatter?.slug}`}
