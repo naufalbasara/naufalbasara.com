@@ -10,13 +10,15 @@ const links = [
 ];
 
 export default function Header() {
+  let currentDate = new Date();
+  let currentYear = currentDate.getFullYear();
   const router = useRouter()
 
   return (
     <header className='static sm:sm-left-0 sm:z-50 sm:mt-32 mx-auto'>
       <div className='sm:flex sm:flex-col sm:justify-between sm:text-end'>
         <UnstyledLink href='/' className='font-bold text-3xl hidden sm:block transition-all ease-in-out duration-600 hover:text-[#4FB464] sm:mb-16'>
-          {'<basara/>'}
+          {'~/basara'}
         </UnstyledLink>
         <nav>
           <ul className='flex sm:flex-col justify-between text-end pt-2 sm:pt-0'>
@@ -27,7 +29,7 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))}
-            <li className='text-xs text-[#A0A0A0] sm:block hidden mb-4'>© 2023 - rb</li>
+            <li className='text-xs text-[#A0A0A0] sm:block hidden mb-4'>© {currentYear} - rb</li>
             <li className='text text-[#A0A0A0] sm:block hidden'>
                 <UnstyledLink href={'/guestbook'} >
                   guestbook

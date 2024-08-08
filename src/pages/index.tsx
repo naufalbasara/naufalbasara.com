@@ -69,7 +69,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className={poppins.className + ' mt-8 text-left'}>
-        <p>
+        <p className={poppins.className}>
           As a final-year Information Systems student with hard-working, highly
           dedicated traits and solid knowledge in programming, I dedicated to
           leverage my skills in machine learning field. Proficient in fulfilling
@@ -78,7 +78,7 @@ export default function HomePage() {
           learning opportunities.
         </p>
         <br />
-        <p>
+        <p className={poppins.className}>
           I have a deep passion and keen interest in exploring machine learning
           field by joining various related competitions, working on OCR capstone
           project, etc. to broaden my skills to build innovative and impactful
@@ -97,7 +97,7 @@ export default function HomePage() {
           <Card
             href='https://github.com/naufalbasara'
             className={
-              'flex h-24 w-60 items-center justify-between p-4 text-left transition hover:scale-105 hover:bg-opacity-70 hover:drop-shadow-md hover:backdrop-blur-md'
+              ' flex h-24 w-60 items-center justify-between p-4 text-left transition hover:scale-105 hover:bg-opacity-70 hover:drop-shadow-md hover:backdrop-blur-md'
             }
           >
             <img
