@@ -3,12 +3,6 @@ import * as React from 'react';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 import Card from '@/components/Card';
-import { Poppins } from '@next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
 
 export default function HomePage() {
   const [isLoading, setLoading] = React.useState(false);
@@ -68,8 +62,8 @@ export default function HomePage() {
           </p>
         </div>
       </section>
-      <section className={poppins.className + ' mt-8 text-left'}>
-        <p className={poppins.className}>
+      <section className=' mt-8 text-left'>
+        <p >
           As a final-year Information Systems student with hard-working, highly
           dedicated traits and solid knowledge in programming, I dedicated to
           leverage my skills in machine learning field. Proficient in fulfilling
@@ -78,7 +72,7 @@ export default function HomePage() {
           learning opportunities.
         </p>
         <br />
-        <p className={poppins.className}>
+        <p>
           I have a deep passion and keen interest in exploring machine learning
           field by joining various related competitions, working on OCR capstone
           project, etc. to broaden my skills to build innovative and impactful

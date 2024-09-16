@@ -4,17 +4,12 @@ import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import ArrowLink from '@/components/links/ArrowLink';
-import { Poppins } from '@next/font/google';
 
-const poppins = Poppins({
-  subsets:['latin'],
-  weight:['400', '700'],
-})
 export default function Contact() {
   return (
     <Layout>
       <Seo templateTitle='Contact' />
-      <section className={poppins.className + ' block items-start text-left'}>
+      <section className=' block items-start text-left'>
         <h1 className='mb-6 text-left text-lg sm:text-3xl'>
           👋 Hey, Contact me for anything!
         </h1>
