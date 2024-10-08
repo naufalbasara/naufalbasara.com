@@ -13,11 +13,14 @@ export default function Contact() {
         <h1 className='mb-6 text-left text-lg sm:text-3xl'>
           👋 Hey, Contact me for anything!
         </h1>
-        <p className='my-10 text-[#A0A0A0]'>
-          I particularly interested in exploring opportunities to work with
-          Tensorflow environment. I'm open for discussions of projects,
-          partnership, or hiring 🤝
-        </p>
+        <div className='my-10'>
+          <p className='my-2'>
+          Motivated Information Systems graduate with deep passion and keen interest in the data field, equipped with hands-on experience in programming and end-to-end data solutions (data engineering to predictive analytics). Driven to establish a career in data engineering, leveraging practical experience.
+          </p>
+          <p className='my-2 text-[#A0A0A0]'>
+            I'm open for discussions of projects, partnership, or hiring 🤝. Reach me out through channels below.
+          </p>
+        </div>
 
         <section className='my-4 flex items-center text-3xl'>
           <UnstyledLink href='https://github.com/naufalbasara' className='mr-6 hover:text-[#A0A0A0] active:text-[#2A412A] '>

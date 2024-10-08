@@ -63,22 +63,8 @@ export default function HomePage() {
         </div>
       </section>
       <section className=' mt-8 text-left'>
-        <p >
-          As a final-year Information Systems student with hard-working, highly
-          dedicated traits and solid knowledge in programming, I dedicated to
-          leverage my skills in machine learning field. Proficient in fulfilling
-          the role of a teaching assistant with a focus on programming, I
-          actively contribute by sharing my current expertise and facilitating
-          learning opportunities.
-        </p>
-        <br />
         <p>
-          I have a deep passion and keen interest in exploring machine learning
-          field by joining various related competitions, working on OCR capstone
-          project, etc. to broaden my skills to build innovative and impactful
-          business solution with the help of Machine Learning that solve
-          real-world problems. I particularly interested in exploring
-          opportunities to work with Tensorflow environment.
+        Talks in Python. Interested to build AI-powered software and end-to-end data solutions for companies to become data-driven.
         </p>
         <div className='mt-6 text-[45px]'>
           <i className='devicon-python-plain mr-4'></i>
