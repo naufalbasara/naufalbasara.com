@@ -29,7 +29,7 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))}
-            <li className='text-xs text-[#A0A0A0] sm:block hidden mb-4'>© {currentYear} - rb</li>
+            <li className='text-xs text-[#A0A0A0] sm:block hidden mb-4'>© {currentYear} - naufalbasara</li>
             <li className='text text-[#A0A0A0] hover:text-[#4FB464] active:text-[#A0A0A0] sm:block hidden'>
                 <UnstyledLink href={'/guestbook'} >
                   leave a trace here!

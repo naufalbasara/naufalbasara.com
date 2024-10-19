@@ -73,10 +73,10 @@ export default function HomePage() {
           <i className='devicon-microsoftsqlserver-plain-wordmark mr-4'></i>
           <i className='devicon-nextjs-original'></i>
         </div>
-        <div className={isLoading ? 'my-8 animate-pulse' : ' my-8'}>
+        <div className={isLoading ? 'my-8 animate-pulse ' : ' my-8'}>
           <Card
             href='https://github.com/naufalbasara'
-            className={
+            className={ isLoading ? 'blur-sm flex h-24 w-60 items-center justify-between p-4 text-left transition hover:scale-105 hover:bg-opacity-70 hover:drop-shadow-md hover:backdrop-blur-md' :
               ' flex h-24 w-60 items-center justify-between p-4 text-left transition hover:scale-105 hover:bg-opacity-70 hover:drop-shadow-md hover:backdrop-blur-md'
             }
           >
@@ -84,7 +84,7 @@ export default function HomePage() {
               src={
                 isLoading ? '/images/profile-picture.png' : gitData.avatar_url!
               }
-              className='h-12 w-12'
+              className={isLoading ? 'blur-sm h-12 w-12': 'h-12 w-12'}
               alt=''
             />
             <div
@@ -105,9 +105,10 @@ export default function HomePage() {
             </div>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              height='32'
+              height='24'
               viewBox='0 -960 960 960'
-              width='32'
+              width='24'
+              fill='#FFFFFF'
             >
               <path d='M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z' />
             </svg>

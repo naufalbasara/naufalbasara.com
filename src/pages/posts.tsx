@@ -53,6 +53,7 @@ export default function Posts({
       )}
       {!isLoading &&
         sortedPosts.map((frontMatter: any) => (
+          <>
           <Blog
             key={frontMatter?.slug}
             href={`/posts/${frontMatter?.slug}`}
@@ -60,6 +61,7 @@ export default function Posts({
             dateUpload={frontMatter?.dateUpload}
             className='mb-4 hover:text-[#A0A0A0]'
           />
+          </>
         ))}
     </Layout>
   );
