@@ -15,10 +15,10 @@ export default function Contact() {
         </h1>
         <div className='my-10'>
           <p className='my-2'>
-          Motivated Information Systems graduate with deep passion and keen interest in the data field, equipped with hands-on experience in programming and end-to-end data solutions (data engineering to predictive analytics). Driven to establish a career in data engineering, leveraging practical experience.
+          Motivated Information Systems graduate with deep passion and keen interest in the data field, equipped with hands-on experience in programming and end-to-end data solutions (data engineering to predictive analytics). Driven to establish a career in data engineering, leveraging practical experience. Reach me out through channels below 🚀.
           </p>
           <p className='my-2 text-[#A0A0A0]'>
-            I'm open for discussions of projects, partnership, or hiring 🤝. Reach me out through channels below.
+            I'm open for discussions of projects, partnership, or hiring.
           </p>
         </div>
 

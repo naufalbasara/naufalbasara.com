@@ -12,33 +12,33 @@ export default function HomePage() {
     avatar_url: null,
   });
 
-  // React.useEffect(() => {
-  //   const init = async () => {
-  //     const { Tooltip, initTE } = await import("tw-elements");
-  //     initTE({ Tooltip });
-  //   };
-  //   init();
-  // }, []);
-
   React.useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        await fetch('api/handler').then((response) => {
-          response.json().then((response) => {
-            const github_data = {
-              username: response.name,
-              total_repos: response.total_repos,
-              avatar_url: response.avatar_url,
-            };
-            setGitData(github_data);
-            setLoading(false);
+    let sessionData = sessionStorage.getItem('github');
+    if (sessionData == null) {
+      (async () => {
+        try {
+          setLoading(true);
+          await fetch('api/handler').then((response) => {
+            response.json().then((response) => {
+              const github_data = {
+                username: response.name,
+                total_repos: response.total_repos,
+                avatar_url: response.avatar_url,
+              };
+              setGitData(github_data);
+              sessionStorage.setItem('github', JSON.stringify(github_data));
+              console.log(JSON.stringify(github_data))
+              setLoading(false);
+            });
           });
-        });
-      } catch {
-        console.log('failed to fetch');
-      }
-    })();
+        } catch {
+          console.log('failed to fetch');
+        }
+      })();
+    } else {
+      setGitData(JSON.parse(sessionData));
+    }
+
   }, []);
 
   return (
@@ -58,7 +58,7 @@ export default function HomePage() {
         className='container h-full rounded-2xl bg-[#2A412F] p-2 text-left sm:h-20'>
           <h1 className='mb-2 text-lg sm:text-3xl'>Naufal Rafiawan Basara</h1>
           <p className='text-xs text-[#A0A0A0] sm:text-sm'>
-            Tech savvy, AI/ML enthusiast
+            Data Engineer, AI/ML enthusiast
           </p>
         </div>
       </section>
@@ -68,10 +68,10 @@ export default function HomePage() {
         </p>
         <div className='mt-6 text-[45px]'>
           <i className='devicon-python-plain mr-4'></i>
+          <i className="devicon-apacheairflow-plain mr-4"></i>
+          <i className="devicon-postgresql-plain-wordmark mr-4"></i>
           <i className='devicon-tensorflow-original mr-4'></i>
           <i className='devicon-django-plain mr-4'></i>
-          <i className='devicon-microsoftsqlserver-plain-wordmark mr-4'></i>
-          <i className='devicon-nextjs-original'></i>
         </div>
         <div className={isLoading ? 'my-8 animate-pulse ' : ' my-8'}>
           <Card

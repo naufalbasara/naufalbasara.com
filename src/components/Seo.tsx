@@ -35,7 +35,7 @@ export default function Seo(props: SeoProps) {
       <meta content={meta.description} name='description' />
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
+      <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       <meta name="google-site-verification" content="y2H9bDuwgdeTzloKXSrXXWvbRc0bg8cuazv2PlQ7mYc" />
       {/* Open Graph */}
       <meta property='og:type' content={meta.type} />
