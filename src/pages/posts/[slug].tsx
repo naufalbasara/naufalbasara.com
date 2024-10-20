@@ -69,7 +69,7 @@ const SinglePage = ({
         </Link>
           <div className='mt-4'>
             <h1>{frontMatter.title}</h1>
-            <span className='text-sm text-[#A0A0A0]'>Posted on {frontMatter.dateUpload}{frontMatter.projectURL && (<span> - <a className='text-[#A0A0A0]' target='_blank' href={frontMatter.projectURL}>Source Code<svg xmlns="http://www.w3.org/2000/svg" className='inline' height="12px" viewBox="0 -960 960 960" width="12px" fill="#A0A0A0"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg></a></span>)}</span>
+            <span className='text-sm text-[#A0A0A0]'>Posted on {frontMatter.dateUpload}{frontMatter.projectURL && (<span> - <a className='text-[#A0A0A0] hover:text-[#4FB464]' target='_blank' href={frontMatter.projectURL}>Source Code<svg xmlns="http://www.w3.org/2000/svg" className='inline' height="12px" viewBox="0 -960 960 960" width="12px" fill="#A0A0A0"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg></a></span>)}</span>
             <div className='my-2 text-xs flex overflow-auto'>
               {topics.map((topic:string) => (
                 <span key={topic} className='p-2 bg-[#2A412F] mr-4 rounded-xl align-middle'>{topic}</span>
