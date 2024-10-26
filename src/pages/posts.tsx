@@ -8,6 +8,8 @@ import Blog from '@/components/Blog';
 import { getAllPostsMeta } from '@/lib/mdx';
 import { InferGetStaticPropsType } from 'next';
 
+export const dynamic = 'auto'
+
 export default function Posts({
   postsClean
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -92,7 +94,7 @@ export async function getStaticProps() {
     ...(map2.get(item.slug) || {}) // Merge with matching object from array2 if exists
   }));
 
-  return { props: { postsClean, postMeta: JSON.parse(JSON.stringify(postMeta))  } };
+  return { props: { postsClean } };
 }
 
 interface postsInterface {

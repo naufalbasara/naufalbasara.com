@@ -157,6 +157,8 @@ type Params = {
   };
 };
 
+export const dynamic = 'auto'
+
 export const getStaticProps = async ({ params }: Params) => {
   const rootDir = path.join(process.cwd(), 'src', 'blogContents');
   const postFilePath = path.join(rootDir, `${params.slug}.mdx`);
