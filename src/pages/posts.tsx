@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
+import prismaClient from '@/lib/prisma';
 import Seo from '@/components/Seo';
 import SearchBar from '@/components/SearchBar';
 import Blog from '@/components/Blog';
@@ -8,11 +9,11 @@ import { getAllPostsMeta } from '@/lib/mdx';
 import { InferGetStaticPropsType } from 'next';
 
 export default function Posts({
-  posts,
+  postsClean
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isLoading, setLoading] = React.useState(false);
 
-  let sortedPosts = posts.sort((a: any, b: any) => {
+  let sortedPosts = postsClean.sort((a: any, b: any) => {
     const date1 = new Date(a.dateUpload)
     const date2 = new Date(b.dateUpload)
     if (date1 < date2) {
@@ -24,7 +25,7 @@ export default function Posts({
   });
 
   React.useEffect(() => {
-    if (!posts) {
+    if (!postsClean) {
       setLoading(true);
     } else {
       setLoading(false);
@@ -35,7 +36,7 @@ export default function Posts({
     <Layout>
       <Seo templateTitle='Posts' />
       <SearchBar className='mb-6' />
-      {isLoading && (
+      {isLoading ? (
         <div className='text-center'>
           <p className='sm:text-md text-base text-white md:text-xl'>
             please wait...{' '}
@@ -50,8 +51,7 @@ export default function Posts({
             </svg>
           </p>
         </div>
-      )}
-      {!isLoading &&
+      ) : (
         sortedPosts.map((frontMatter: any) => (
           <>
           <Blog
@@ -59,16 +59,51 @@ export default function Posts({
             href={`/posts/${frontMatter?.slug}`}
             title={frontMatter?.title}
             dateUpload={frontMatter?.dateUpload}
+            views={frontMatter._count.visits}
             className='mb-4 hover:text-[#A0A0A0]'
           />
           </>
-        ))}
+        ))
+      )
+    }
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPostsMeta();
+  const posts:postsInterface[] = await getAllPostsMeta();
+  const postMeta:dbInterface[] | null = await prismaClient.post.findMany({
+    select: {
+      slug: true,
+      _count: {
+        select: {
+          visits: true
+        }
+      }
+    },
+    orderBy: {
+      datePosted: 'desc'
+    }
+  });
+  
+  const map2 = new Map<string, dbInterface>(postMeta.map(item => [item.slug, item]));
+  const postsClean = posts.map((item: postsInterface) => ({
+    ...item,
+    ...(map2.get(item.slug) || {}) // Merge with matching object from array2 if exists
+  }));
 
-  return { props: { posts } };
+  return { props: { postsClean, postMeta: JSON.parse(JSON.stringify(postMeta))  } };
+}
+
+interface postsInterface {
+  dateUpload: string;
+  projectURL: string;
+  slug: string;
+  title: string;
+  topics: string;
+}
+
+interface dbInterface {
+  slug: string;
+  _count: object;
 }

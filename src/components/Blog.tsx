@@ -5,7 +5,7 @@ type BlogProps = {
   title?: string;
   dateUpload?: string;
   href?: string;
-  // url?: string;
+  views?: string;
 } & React.ComponentPropsWithRef<'div'>;
 
 const Blog = React.forwardRef<HTMLDivElement, BlogProps>(
@@ -15,13 +15,13 @@ const Blog = React.forwardRef<HTMLDivElement, BlogProps>(
       title,
       dateUpload,
       href,
-      // url,
+      views,
     },
   ) => {
     return (
       <Link href={`${href}`} className={'block p-2 text-left ' + className}>   
           <h1 className='text-lg'>{title}</h1>
-          <p className='text-xs text-[#A0A0A0]  '>{dateUpload}</p>
+          <p className='text-xs text-[#A0A0A0]  '>{dateUpload} - <span className=''>{views} views</span></p>
       </Link>
     );
   }

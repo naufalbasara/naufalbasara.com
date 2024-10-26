@@ -1,0 +1,35 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Post {
+  id          Int        @default(autoincrement()) @id
+  slug        String     @unique
+  datePosted  DateTime   @default(now())
+  likes Like[]
+  visits Visit[]
+}
+
+model Like {
+  id        Int        @default(autoincrement()) @id
+  sessionId String
+  createdAt DateTime   @default(now())
+  post      Post? @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    Int?
+}
+
+model Visit {
+  id        Int        @default(autoincrement()) @id
+  sessionId String
+  createdAt DateTime   @default(now())
+  post      Post? @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    Int?
+}

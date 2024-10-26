@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+import { serialize } from 'cookie';
+import { GetServerSidePropsContext } from 'next';
+import crypto from 'crypto';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 import Card from '@/components/Card';
@@ -117,4 +120,41 @@ export default function HomePage() {
       </section>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { res } = context; // Node.js ServerResponse object
+  const cookieStore = context.req.headers.cookie || '';
+  const today = new Date();
+  
+  // Parse cookies manually if necessary
+  const cookieAnalytics = cookieStore.includes('analytics-basara') ? cookieStore.split('analytics-basara=')[1].split(';')[0] : null;
+
+  // Function to generate a cryptographically secure random string
+  function generateSecureRandomString(length: number) {
+    return crypto.randomBytes(length).toString('hex'); // Generate a hex string
+  }
+
+  // If the cookie is not found, generate a secure random string and set the cookie
+  if (!cookieAnalytics) {
+    const newCookieValue = generateSecureRandomString(16);  // 16 bytes -> 32 characters hex
+
+    // Using the 'serialize' function from the 'cookie' library to set the cookie
+    const cookie = serialize('analytics-basara', newCookieValue, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      path: '/  ',
+      sameSite: 'strict',
+      expires: new Date(today.getFullYear(), today.getMonth()+1, today.getDate())
+    });
+
+    // Set the cookie header using Node.js' res.setHeader
+    res.setHeader('Set-Cookie', cookie);
+  }
+
+  return {
+    props: {
+      cookieAnalytics: cookieAnalytics || 'New cookie has been set',
+    },
+  };
 }

@@ -78,8 +78,6 @@ export default function Seo(props: SeoProps) {
   );
 }
 
-// !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
-// ! then replace the whole /public/favicon folder and favicon.ico
 const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
   {
     rel: 'apple-touch-icon',
@@ -97,6 +95,5 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
     type: 'image/png',
     sizes: '16x16',
     href: '/favicon/favicon-16x16.png',
-  },
-  { rel: 'manifest', href: '/favicon/site.webmanifest' },
+  }
 ];
