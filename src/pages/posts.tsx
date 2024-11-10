@@ -43,12 +43,12 @@ export default function Posts({
 
   
   React.useEffect(() => {
-    if (!postsList) {
+    if (postsList.length == 0) {
       setLoading(true);
     } else {
       setLoading(false);
     }
-  }, []);
+  }, [postsList]);
 
   let sortedPosts = postsList.sort((a: any, b: any) => {
     const date1 = new Date(a.dateUpload)
