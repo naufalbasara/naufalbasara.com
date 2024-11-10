@@ -22,7 +22,7 @@ export const dynamic = 'auto'
 export default function Posts({
   posts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [postsList, setPostsList] = React.useState<PostInterface[]>([]); 
 
   React.useEffect(() => {
@@ -36,10 +36,9 @@ export default function Posts({
         }));
 
         setPostsList([...postsClean])
+        setLoading(false);
       }
     )
-
-
     })();
   }, []);
 
