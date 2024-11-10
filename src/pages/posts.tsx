@@ -35,8 +35,7 @@ export default function Posts({
           ...(map2.get(item.slug) || {}) // Merge with matching object from array2 if exists
         }));
 
-        setPostsList([...postsClean])
-        setLoading(false);
+        setPostsList([...postsClean]);
       }
     )
     })();
