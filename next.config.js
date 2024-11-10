@@ -22,7 +22,7 @@ const nextConfig = {
   experimental: {
     mdxRs: true,
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
       
       // SVGR

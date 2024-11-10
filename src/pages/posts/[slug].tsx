@@ -26,6 +26,7 @@ const SinglePage = ({
   let topics = frontMatter.topics.split(",");
   const [scrolled, setScrolled] = useState(0);
   const [liked, setLiked] = useState(false);
+  const [called, setCalled] = useState(false);
   const [meta, setMeta] = useState({visits: 0, likes: 0});
 
   const handleLike = async () => {
@@ -40,13 +41,20 @@ const SinglePage = ({
 
   useEffect(() => {
     (async () => {
+      await axios.post(`/api/content/${frontMatter.slug}`).then(res => res.data)
+      setCalled(true)
+    })()
+  }, []);
+
+  useEffect(() => {
+    (async () => {
       await axios.get(`/api/like/${frontMatter.slug}`).then(res => 
         {
           setLiked(res.data.isLiked);
         }
       )
     })()
-  }, [meta]);
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -54,7 +62,7 @@ const SinglePage = ({
         setMeta({visits: res.data.contentViews, likes:res.data.contentLikes})
       })
     })()
-  }, [SinglePage, frontMatter]);
+  }, [SinglePage, called]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -164,10 +172,6 @@ export const getStaticProps = async ({ params }: Params) => {
   const postFilePath = path.join(rootDir, `${params.slug}.mdx`);
   const source = fs.readFileSync(postFilePath, { encoding: 'utf-8' });
   const { content, data } = matter(source);
-  
-  // update views data
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-  axios.post(`${baseUrl}/api/content/${params.slug}`).then(res => res.data)
   data.slug = params.slug;
 
   const mdxSource = await serialize(content, {

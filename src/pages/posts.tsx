@@ -1,21 +1,58 @@
 import * as React from 'react';
 
+import axios from 'axios';
+import Blog from '@/components/Blog';
 import Layout from '@/components/layout/Layout';
 import prismaClient from '@/lib/prisma';
 import Seo from '@/components/Seo';
 import SearchBar from '@/components/SearchBar';
-import Blog from '@/components/Blog';
 import { getAllPostsMeta } from '@/lib/mdx';
 import { InferGetStaticPropsType } from 'next';
 
-export const dynamic = 'auto'
+interface PostInterface {
+  slug: string;
+  _count?: object;
+  dateUpload: string;
+  projectURL: string;
+  title: string;
+  topics: string;
+}
 
+export const dynamic = 'auto'
 export default function Posts({
-  postsClean
+  posts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isLoading, setLoading] = React.useState(false);
+  const [postsList, setPostsList] = React.useState<PostInterface[]>([]); 
 
-  let sortedPosts = postsClean.sort((a: any, b: any) => {
+  React.useEffect(() => {
+    (async () => {
+      await axios.get(`/api/posts`).then(res => {
+        const postMeta:dbInterface[] = res.data.postObject;
+        const map2 = new Map<string, dbInterface>(postMeta.map(item => [item.slug, item]));
+        const postsClean = posts.map((item: postsInterface) => ({
+          ...item,
+          ...(map2.get(item.slug) || {}) // Merge with matching object from array2 if exists
+        }));
+
+        setPostsList([...postsClean])
+      }
+    )
+
+
+    })();
+  }, []);
+
+  
+  React.useEffect(() => {
+    if (!postsList) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  let sortedPosts = postsList.sort((a: any, b: any) => {
     const date1 = new Date(a.dateUpload)
     const date2 = new Date(b.dateUpload)
     if (date1 < date2) {
@@ -25,14 +62,6 @@ export default function Posts({
     }
     return 0;
   });
-
-  React.useEffect(() => {
-    if (!postsClean) {
-      setLoading(true);
-    } else {
-      setLoading(false);
-    }
-  }, []);
 
   return (
     <Layout>
@@ -61,7 +90,7 @@ export default function Posts({
             href={`/posts/${frontMatter?.slug}`}
             title={frontMatter?.title}
             dateUpload={frontMatter?.dateUpload}
-            views={frontMatter._count.visits}
+            views={frontMatter?._count.visits}
             className='mb-4 hover:text-[#A0A0A0]'
           />
           </>
@@ -74,27 +103,7 @@ export default function Posts({
 
 export async function getStaticProps() {
   const posts:postsInterface[] = await getAllPostsMeta();
-  const postMeta:dbInterface[] | null = await prismaClient.post.findMany({
-    select: {
-      slug: true,
-      _count: {
-        select: {
-          visits: true
-        }
-      }
-    },
-    orderBy: {
-      datePosted: 'desc'
-    }
-  });
-  
-  const map2 = new Map<string, dbInterface>(postMeta.map(item => [item.slug, item]));
-  const postsClean = posts.map((item: postsInterface) => ({
-    ...item,
-    ...(map2.get(item.slug) || {}) // Merge with matching object from array2 if exists
-  }));
-
-  return { props: { postsClean } };
+  return { props: { posts } };
 }
 
 interface postsInterface {
